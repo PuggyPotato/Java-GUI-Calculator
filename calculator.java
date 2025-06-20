@@ -9,13 +9,16 @@ public class calculator{
     public static void main(String[] args){
         JFrame frame = new JFrame("My Calculator!");
         JTextArea display = new JTextArea("");
-        frame.setSize(1000,2000);
+        JRadioButton on = new JRadioButton("on");
+        JRadioButton off = new JRadioButton("off");
+        frame.setSize(400,600);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLayout(null);
 
         display.setBackground(Color.LIGHT_GRAY);
-        display.setBounds(10,20,950,80);
+        display.setBounds(5,10,370,30);
 
         frame.getContentPane().setBackground(Color.gray);
         frame.add(display);
