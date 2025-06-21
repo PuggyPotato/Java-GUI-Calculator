@@ -17,6 +17,7 @@ public class calculator{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLayout(null);
+        frame.setResizable(false);
 
         
         display.setBackground(Color.gray);
@@ -27,6 +28,20 @@ public class calculator{
         display.setForeground(Color.white);
         display.setFocusable(false);
         display.setBorder(null);
+
+        on.setBounds(350,50,50,50);
+        on.setHorizontalTextPosition(SwingConstants.CENTER);
+        on.setVerticalTextPosition(SwingConstants.TOP);
+        on.setBorderPainted(false);
+        on.setOpaque(false);
+        on.setForeground(Color.WHITE);
+
+        off.setBounds(320,50,50,50);
+        off.setHorizontalTextPosition(SwingConstants.CENTER);
+        off.setVerticalTextPosition(SwingConstants.TOP);
+        off.setBorderPainted(false);
+        off.setOpaque(false);
+        off.setForeground(Color.WHITE);
 
         frame.getContentPane().setBackground(Color.darkGray);
         frame.add(display);
