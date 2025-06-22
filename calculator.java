@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Font;
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
+
+
 
 
 
@@ -10,6 +14,7 @@ public class calculator{
     static boolean isOn = true;
     public static void main(String[] args){
         ButtonGroup group = new ButtonGroup();
+
 
         JFrame frame = new JFrame("My Calculator!");
         JTextField display = new JTextField("12345");
@@ -31,6 +36,10 @@ public class calculator{
         JButton multiplyButton = new JButton("*");
         JButton divideButton = new JButton("/");
         JButton resetButton = new JButton("C");
+        JButton equalButton = new JButton("=");
+        JButton decimalButton = new JButton(".");
+
+        final StringBuilder expression = new StringBuilder();
 
         group.add(on);
         group.add(off);
@@ -88,13 +97,16 @@ public class calculator{
         oneButton.setBounds(20,290,100,70);
         twoButton.setBounds(140,290,100,70);
         threeButton.setBounds(260,290,100,70);
-        zeroButton.setBounds(20,380,220,70);
+        zeroButton.setBounds(20,380,100,70);
 
+        equalButton.setBounds(140,380,100,70);
         resetButton.setBounds(260,380,100,70);
-        plusButton.setBounds(20,470,70,70);
-        minusButton.setBounds(110,470,70,70);
-        multiplyButton.setBounds(200,470,70,70);
-        divideButton.setBounds(290,470,70,70);
+
+        plusButton.setBounds(20,470,50,50);
+        minusButton.setBounds(90,470,50,50);
+        multiplyButton.setBounds(160,470,50,50);
+        divideButton.setBounds(230,470,50,50);
+        decimalButton.setBounds(300,470,60,50);
 
         
 
@@ -102,6 +114,102 @@ public class calculator{
         frame.add(display);
         frame.add(on);
         frame.add(off);
+
+        zeroButton.addActionListener(e ->{
+            expression.append("0");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        oneButton.addActionListener(e ->{
+            expression.append("1");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        twoButton.addActionListener(e ->{
+            expression.append("2");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        threeButton.addActionListener(e ->{
+            expression.append("3");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        fourButton.addActionListener(e ->{
+            expression.append("4");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        fiveButton.addActionListener(e ->{
+            expression.append("5");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        sixButton.addActionListener(e ->{
+            expression.append("6");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        sevenButton.addActionListener(e ->{
+            expression.append("7");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        eightButton.addActionListener(e ->{
+            expression.append("8");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        nineButton.addActionListener(e ->{
+            expression.append("9");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        plusButton.addActionListener(e ->{
+            expression.append("+");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        minusButton.addActionListener(e ->{
+            expression.append("-");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        multiplyButton.addActionListener(e ->{
+            expression.append("*");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        divideButton.addActionListener(e ->{
+            expression.append("/");
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        resetButton.addActionListener(e ->{
+            expression.setLength(0);
+            System.out.println(expression);
+            display.setText(expression.toString());
+        });
+        decimalButton.addActionListener(e ->{
+            expression.append(".");
+            display.setText(expression.toString());
+        });
+
+        equalButton.addActionListener(e -> {
+            try{
+                Expression exp = new ExpressionBuilder(expression.toString()).build();
+                double result = exp.evaluate();
+                display.setText(String.valueOf(result));
+                expression.setLength(0);
+                expression.append(result);
+            }catch (Exception ex) {
+                display.setText("Error!");
+                expression.setLength(0);
+            }
+        });
+
+
+
         
         frame.add(zeroButton);
         frame.add(oneButton);
@@ -118,6 +226,8 @@ public class calculator{
         frame.add(multiplyButton);
         frame.add(divideButton);
         frame.add(resetButton);
+        frame.add(equalButton);
+        frame.add(decimalButton);
         
 
     }
